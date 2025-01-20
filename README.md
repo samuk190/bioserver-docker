@@ -10,7 +10,10 @@ To briefly state the goal behind this project, it's simply to preserve [dev ghos
 2. set your server IP in .env (SERVER_IP=)
 3. set your router IP or secondary dns (ROUTER_IP=)
 4. build basic compose file `docker compose -f docker-compose.infra.yaml build`
-5. disable systemd-resovled `make disable-systemd-resolved`
+5. redirect port 53 to 1053 -> RUN on terminal: sudo iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-port 1053
+sudo iptables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-port 1053
+
+(If running DNS on 53:53 and ONLY IF You dont want step 4) 5. disable systemd-resovled `make disable-systemd-resolved`
 
 ### Running game server
 1. run infrastracture `docker compose -f docker-compose.infra.yaml up -d`

@@ -54,7 +54,7 @@ services:
         - SERVER_IP=${SERVER_IP}
         - ROUTER_IP=${ROUTER_IP}
     ports:
-      - "53:53/udp"
+      - "1053:53/udp"
     cap_add:
       - NET_ADMIN
 
